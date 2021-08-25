@@ -21,11 +21,15 @@ function fetchuserInfo(userName) {
 function fetchCommentItem(id) {
    return axios.get(`${config.baseUrl}item/${id}.json`)
 }
+function fetchList(pageName) {
+   return axios.get(`${config.baseUrl}${pageName}/1.json`)
+}
 
 export {
    fetchNewsList, 
    fetchAskList, 
    fetchJobsList,
    fetchuserInfo,
-   fetchCommentItem
+   fetchCommentItem,
+   fetchList
 }
