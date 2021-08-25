@@ -1,37 +1,37 @@
 <template>
    <div>
       <section>
-         <!-- 질문 상세 정보 -->
-         <div class="user-container">
-            <div>
-               <i class="fas fa-user"></i>
-            </div>
-            <div class="user-description">
-               <router-link :to="`/user/${fetchedItemd.user}`">
-                  {{ fetchedItemd.user }}
+         <user-profile :info="fetchedItem">
+            <div slot="username" >
+               <router-link :to="`/user/${fetchedItem.user}`">
+                  {{ fetchedItem.user }}
                </router-link>
-               <div class="time">
-                  {{ fetchedItemd.time_ago }}
-               </div>
             </div>
-         </div>
-         <h2>{{ fetchedItemd.title }}</h2>
+            <template slot="time">{{ 'Posted ' + fetchedItem.time_ago }}</template>
+         </user-profile>
+         <section>
+            <h2>{{ fetchedItem.title }}</h2>
+         </section>
       </section>
       
       <section>
          <!-- 질문 댓글 -->
       </section>
-      <!-- <p>{{ fetchedItemd.title }}</p> -->
-      <div v-html="fetchedItemd.content" class="content"></div>
+      <!-- <p>{{ fetchedItem.title }}</p> -->
+      <div v-html="fetchedItem.content" class="content"></div>
    </div>
 </template>
 
 <script>
+import UserProfile from '../components/UserProfile.vue'
 import { mapGetters } from 'vuex'
 
 export default {
+  components: { 
+     UserProfile 
+   },
    computed: {
-      ...mapGetters(['fetchedItemd'])
+      ...mapGetters(['fetchedItem'])
    },
    created() {
       const itemId = this.$route.params.id
