@@ -9,7 +9,7 @@ import ItemView from '../views/ItemView.vue'
 Vue.use(VueRouter);
 
 export const router = new VueRouter({
-  mode: 'history',
+  // mode: 'history',
   routes: [
     {
       path: '/',
@@ -30,11 +30,11 @@ export const router = new VueRouter({
         component: JobsView
     },
     {
-        path: '/user',
+        path: '/user/:id',
         component: UserView
     },
     {
-        path: '/item',
+        path: '/item/:id',
         component: ItemView
     },
   ]
