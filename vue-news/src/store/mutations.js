@@ -15,6 +15,7 @@ export default {
       state.item = item
    },
    SET_LIST(state, list) {
+      console.log('SET_LIST');
       state.list = list
    }
 }
